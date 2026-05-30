@@ -144,7 +144,8 @@ Do not move on until the core requirements are clear.
 
 ## 4. Non-functional requirements
 
-Guide the candidate toward frontend-specific NFRs.
+Guide the candidate toward frontend-specific NFRs. For the full catalog with selection guidance and architectural implications, see
+[NON_FUNCTIONAL_REQUIREMENTS_TOPICS.md](./references/NON_FUNCTIONAL_REQUIREMENTS_TOPICS.md).
 
 Discuss:
 
