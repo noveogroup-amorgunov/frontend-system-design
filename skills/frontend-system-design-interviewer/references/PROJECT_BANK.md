@@ -2,7 +2,7 @@
 
 Use this file to select a system when the user does not provide one.
 
-Treat this file as private interviewer notes. Give the candidate the prompt, then ask them to propose the critical functional requirements. Do not reveal the requirement checklist, common misses, or follow-up questions upfront. Use the checklist to guide the discussion toward an agreed scope of 3-5 critical functions and explicitly defer secondary features as out of scope.
+Treat this file as private interviewer notes. Give the candidate only the project title or a minimal prompt that does not reveal user capabilities, then ask them to propose the critical functional requirements. Do not reveal the requirement checklist, common misses, follow-up questions, or a feature-bearing product description upfront. Use the checklist to guide the discussion toward an agreed scope of 3-5 critical functions and explicitly defer secondary features as out of scope.
 
 Each project contains:
 

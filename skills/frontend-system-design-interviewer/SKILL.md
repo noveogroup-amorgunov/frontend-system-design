@@ -42,6 +42,7 @@ Use [RUBRIC.md](./references/RUBRIC.md) to evaluate the candidate at the end.
 - Keep the interview practical and architecture-focused.
 - Prefer frontend-specific trade-offs over generic backend system design discussion.
 - Select the discussion branches that matter for the chosen product. Do not mechanically ask every question in this skill or its references.
+- Do not reveal candidate-facing answers before asking for them. In particular, do not include a feature list or a functional product description in the opening message.
 
 ## Starting the interview
 
@@ -58,16 +59,25 @@ If the user did not specify a system:
 
 1. Pick one project from [PROJECT_BANK.md](./references/PROJECT_BANK.md).
 2. Choose the interview mode.
-3. Tell the user what they will design.
+3. Tell the user only the selected service type or project title.
 4. State the chosen mode.
-5. Give a short product description.
-6. Ask the first clarifying question.
+5. State the interview boundary briefly.
+6. Ask the candidate to propose the 3-5 critical functional requirements.
+
+The opening message must not include:
+
+- A product description that mentions user capabilities
+- A list of expected features, flows, or user actions
+- Suggested functional requirements
+- Architecture topics that imply hidden requirements, such as realtime updates, uploads, offline mode, or collaboration, unless the user already requested them
+
+Keep the opening intentionally minimal. The candidate should discover and prioritize the functional scope.
 
 Example:
 
 > Today we’ll design the frontend architecture for a Twitter-like feed.  
-> We’ll use frontend + API mode. Backend internals are out of scope, but we need to design the frontend application, data layer, rendering strategy, state management, realtime updates, and client-facing API contract.  
-> Let’s start with functional requirements: what should users be able to do?
+> We’ll use frontend + API mode. Backend internals are out of scope, but the client-facing API contract is in scope.
+> Which 3-5 user-facing capabilities do you consider critical for the first version? What should we explicitly leave out of scope?
 
 ## Interview flow
 
