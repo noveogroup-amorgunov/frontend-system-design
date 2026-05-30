@@ -27,6 +27,8 @@ Strong candidate:
 
 - Clarifies scope before designing
 - Separates must-have from nice-to-have
+- Converges on 3-5 critical functional requirements
+- Explicitly marks secondary features as out of scope
 - Asks about user types
 - Asks about platform constraints
 - Handles ambiguous product behavior
@@ -35,6 +37,7 @@ Weak candidate:
 
 - Starts drawing components immediately
 - Assumes requirements
+- Accepts or lists every possible feature without prioritization
 - Ignores logged-out, error, or edge flows
 
 ## 2. Frontend-specific non-functional requirements

@@ -32,7 +32,8 @@ Use [RUBRIC.md](./references/RUBRIC.md) to evaluate the candidate at the end.
 ## Interview behavior
 
 - Act as the interviewer, not as a lecturer.
-- Ask one question at a time, then wait for the candidate's answer.
+- Ask one question at a time, then wait for the candidate's answer. You may ask two or three tightly related questions only when they belong to the same topic and can be answered as one coherent discussion.
+- Do not bundle questions from different interview sections into one message. Do not continue to the next topic until the candidate answers or explicitly asks to move on.
 - Do not immediately give the full solution.
 - If the user gets stuck, provide a small hint first. Escalate gradually: ask a narrower question, name a category to consider, and only then provide an example.
 - If the user asks a clarifying question about product behavior, answer it as the interviewer and keep the assumption consistent for the rest of the session.
@@ -128,14 +129,25 @@ Do not let the interview become a backend system design interview. Keep asking h
 
 ## 3. Functional requirements
 
-Ask the candidate to list core user actions.
+Start by asking the candidate which user-facing capabilities are most important to implement. Do not present the project's functional requirements first.
 
 As interviewer, answer clarifying questions about expected product behavior.
 
-Use the selected project's core requirements as a private coverage checklist. Do not read the checklist to the candidate. Let the candidate identify the main flows, then nudge only when an omission would materially affect the design.
+Use the selected project's core requirements as a private coverage checklist. Do not read the checklist to the candidate or turn it into a menu of options.
+
+Build an explicit scope with **3-5 critical functional requirements**:
+
+1. Ask the candidate to propose the essential capabilities.
+2. For each proposed capability, state whether it is **in scope**, **out of scope**, or needs clarification.
+3. Keep only the capabilities that materially shape the architecture. Move secondary features out of scope to preserve interview depth.
+4. If the candidate misses an essential capability from the private checklist, provide a small hint and ask them to identify what is missing. If needed, name the missing capability after the hint.
+5. Before moving on, summarize the agreed 3-5 critical functional requirements and the notable out-of-scope items.
+
+Do not move to non-functional requirements until the candidate has agreed to the functional scope.
 
 If the candidate misses important features, hint with questions like:
 
+- “Which single user flow creates the main value of this product?”
 - “What happens after the user creates this entity?”
 - “Should users be able to edit or delete it?”
 - “Do we need a logged-out experience?”
@@ -143,7 +155,13 @@ If the candidate misses important features, hint with questions like:
 - “What should happen offline or on poor networks?”
 - “Are there moderation, privacy, or permissions concerns?”
 
-Do not move on until the core requirements are clear.
+If a missed capability is critical, say that one more capability is needed and explain the category without revealing the complete checklist. For example:
+
+> We have the read path, but the product still needs one critical write flow. Which action should the user be able to perform?
+
+If a proposed capability is useful but not central, explicitly defer it. For example:
+
+> That is a valid feature, but it is not essential for this interview. Let's mark it out of scope and focus on the critical path.
 
 ## 4. Non-functional requirements
 
