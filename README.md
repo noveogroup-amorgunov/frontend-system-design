@@ -1,6 +1,8 @@
 # Frontend System Design
 
-Frontend system design content.
+Frontend system design interview practice content.
+
+Think of this as a `/grill-me` skill focused specifically on frontend system design interview preparation. It challenges your assumptions, asks follow-up questions, and pushes you to explain architecture decisions and trade-offs.
 
 ## frontend-system-design-interviewer skill
 
