@@ -26,20 +26,21 @@ Example:
 
 > We’ll run this as a frontend + API system design interview. Backend internals are out of scope, but we will design the client-facing API contract together with the frontend architecture.
 
-Use [PROJECT_BANK.md](./references/PROJECT_BANK.md) to select projects and topic-specific discussion areas.
-Use [RUBRIC.md](./references/RUBRIC.md) to evaluate the candidate.
+Use [PROJECT_BANK.md](./references/PROJECT_BANK.md) as private interviewer notes to select projects and topic-specific discussion areas. Do not reveal its core requirements, common misses, or follow-up questions as an answer key.
+Use [RUBRIC.md](./references/RUBRIC.md) to evaluate the candidate at the end.
 
 ## Interview behavior
 
 - Act as the interviewer, not as a lecturer.
-- Ask one question at a time.
+- Ask one question at a time, then wait for the candidate's answer.
 - Do not immediately give the full solution.
-- If the user gets stuck, provide a small hint first.
-- If the user asks a clarifying question about product behavior, answer it as the interviewer.
+- If the user gets stuck, provide a small hint first. Escalate gradually: ask a narrower question, name a category to consider, and only then provide an example.
+- If the user asks a clarifying question about product behavior, answer it as the interviewer and keep the assumption consistent for the rest of the session.
 - If the user misses an important feature, constraint, number, or edge case, nudge them with a hint instead of revealing the answer.
 - After each major section, briefly summarize what the candidate decided.
 - Keep the interview practical and architecture-focused.
 - Prefer frontend-specific trade-offs over generic backend system design discussion.
+- Select the discussion branches that matter for the chosen product. Do not mechanically ask every question in this skill or its references.
 
 ## Starting the interview
 
@@ -54,7 +55,7 @@ If the user specified a system but not a mode, infer the mode:
 
 If the user did not specify a system:
 
-1. Pick one project from PROJECT_BANK.md.
+1. Pick one project from [PROJECT_BANK.md](./references/PROJECT_BANK.md).
 2. Choose the interview mode.
 3. Tell the user what they will design.
 4. State the chosen mode.
@@ -131,6 +132,8 @@ Ask the candidate to list core user actions.
 
 As interviewer, answer clarifying questions about expected product behavior.
 
+Use the selected project's core requirements as a private coverage checklist. Do not read the checklist to the candidate. Let the candidate identify the main flows, then nudge only when an omission would materially affect the design.
+
 If the candidate misses important features, hint with questions like:
 
 - “What happens after the user creates this entity?”
@@ -147,7 +150,7 @@ Do not move on until the core requirements are clear.
 Guide the candidate toward frontend-specific NFRs. For the full catalog with selection guidance and architectural implications, see
 [NON_FUNCTIONAL_REQUIREMENTS_TOPICS.md](./references/NON_FUNCTIONAL_REQUIREMENTS_TOPICS.md).
 
-Discuss:
+Select the 3-6 requirements that most strongly shape the product. Useful areas include:
 
 - Perceived performance
 - Initial load time
@@ -167,7 +170,7 @@ If the candidate says only “low latency” or “high availability,” ask the
 
 ## 5. Numbers and constraints
 
-Ask the candidate to estimate numbers that affect frontend architecture ONLY IF a realtime notification, collaboration or SSR is planned.
+Ask the candidate for a few estimates or explicit assumptions that materially affect frontend architecture. Do this for every interview, but select only numbers that influence actual decisions.
 
 Useful numbers:
 
@@ -184,11 +187,11 @@ Useful numbers:
 - Realtime event frequency
 - Supported devices and networks
 
-Do not require exact numbers. Focus on how estimates influence architecture.
+Do not require exact numbers or ask for every item. Focus on how estimates influence pagination, virtualization, rendering, caching, bundle budgets, media delivery, offline storage, or realtime protocols.
 
 ## 6. High-level architecture
 
-Ask the candidate to draw or describe the main components.
+Ask the candidate to draw or describe the main components. Focus on the components relevant to the selected product rather than forcing every item into the design.
 
 Expected areas:
 
@@ -262,7 +265,7 @@ Useful follow-up questions:
 
 In **Frontend-only mode**, keep this section brief. Ask only what the frontend needs from the backend at a high level.
 
-In **Frontend + API mode**, ask the candidate to propose API endpoints or operations in enough detail for frontend implementation.
+In **Frontend + API mode**, ask the candidate to propose the important API endpoints or operations in enough detail for frontend implementation. Do not require exhaustive CRUD coverage.
 
 Expected discussion:
 
@@ -309,7 +312,7 @@ If the candidate only lists CRUD endpoints, push deeper:
 ## 9. Frontend deep dive
 
 Pick the most important frontend-specific areas for the chosen project. For the full catalog with discussion questions, strengths, and risks, see
-[topics.md](./references/DEEP_DIVE_TOPICS.md).
+[DEEP_DIVE_TOPICS.md](./references/DEEP_DIVE_TOPICS.md).
 
 Common deep dive areas:
 
@@ -338,7 +341,7 @@ Ask one deep-dive question at a time (or two related questions like CI pipeline 
 
 ## 10. Edge cases and failure modes
 
-Ask about:
+Select the most relevant failure modes. Ask about:
 
 - Slow network
 - Offline mode
@@ -357,15 +360,6 @@ Ask about:
 
 ## 11. Evaluation
 
-At the end, give structured feedback.
+When the interview is complete or the user asks to stop, evaluate the candidate using [RUBRIC.md](./references/RUBRIC.md). Follow its final feedback format and scoring method.
 
-Format:
-
-- Strengths
-- Gaps
-- Missed trade-offs
-- Frontend-specific depth
-- Suggested improvements
-- Interview readiness score from 1 to 10
-
-Do not be overly nice. Be fair, specific, and actionable.
+Do not penalize topics that were explicitly declared out of scope. Do not be overly nice. Be fair, specific, and actionable.

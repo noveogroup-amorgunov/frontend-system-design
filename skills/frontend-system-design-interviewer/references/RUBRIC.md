@@ -2,7 +2,24 @@
 
 Use this rubric at the end of the mock interview.
 
-Score each category from 1 to 5.
+Score each applicable category from 1 to 5. Compute the overall readiness score by averaging the category scores, multiplying the average by two, and rounding to the nearest whole number.
+
+In **Frontend-only mode**, score API design based on whether the candidate identifies the client-facing capabilities and contracts the frontend depends on. Do not require endpoint-level detail.
+
+Do not penalize requirements or design areas that were explicitly declared out of scope.
+
+## Contents
+
+- [1. Requirements clarification](#1-requirements-clarification)
+- [2. Frontend-specific non-functional requirements](#2-frontend-specific-non-functional-requirements)
+- [3. Numbers and constraints](#3-numbers-and-constraints)
+- [4. Architecture](#4-architecture)
+- [5. Data model](#5-data-model)
+- [6. API design](#6-api-design)
+- [7. Frontend deep dive](#7-frontend-deep-dive)
+- [8. Failure modes](#8-failure-modes)
+- [9. Communication](#9-communication)
+- [Final feedback format](#final-feedback-format)
 
 ## 1. Requirements clarification
 
@@ -191,7 +208,19 @@ Frontend-only / Frontend + API
 
 - ...
 
-### Score
+### Scorecard
+
+- Requirements clarification: X/5
+- Frontend-specific NFRs: X/5
+- Numbers and constraints: X/5
+- Architecture: X/5
+- Data model: X/5
+- API design: X/5
+- Frontend deep dive: X/5
+- Failure modes: X/5
+- Communication: X/5
+
+### Readiness score
 
 X/10
 
@@ -206,3 +235,4 @@ For the next round, practice: ...
 5–6: Understands basics but lacks depth or structure
 3–4: Fragmented answer, many missed frontend concerns
 1–2: Not interview-ready yet
+```

@@ -2,6 +2,8 @@
 
 Use this file to select a system when the user does not provide one.
 
+Treat this file as private interviewer notes. Give the candidate the prompt and agreed scope, but do not reveal the requirement checklist, common misses, or follow-up questions upfront.
+
 Each project contains:
 
 - Product prompt
@@ -11,6 +13,23 @@ Each project contains:
 - Common candidate misses
 - Strong-signal follow-up questions
 
+## Contents
+
+| Project | Strong practice areas |
+| --- | --- |
+| [1. Twitter-like Feed](#1-twitter-like-feed) | Feed state, pagination, optimistic UI, realtime |
+| [2. News Feed / Media Homepage](#2-news-feed--media-homepage) | Rendering, SEO, caching, media |
+| [3. Chat / Messenger](#3-chat--messenger) | Realtime, ordering, offline queue |
+| [4. Collaborative Document Editor](#4-collaborative-document-editor) | CRDT/OT, local-first, conflicts |
+| [5. Kanban Board / Project Management Tool](#5-kanban-board--project-management-tool) | Drag-and-drop, ordering, collaboration |
+| [6. Video Streaming Platform](#6-video-streaming-platform) | Media delivery, player state, analytics |
+| [7. E-commerce Product Page and Cart](#7-e-commerce-product-page-and-cart) | SSR, cart state, inventory, checkout |
+| [8. Booking / Calendar Scheduling App](#8-booking--calendar-scheduling-app) | Time zones, race conditions, validation |
+| [9. Dashboard / Analytics Product](#9-dashboard--analytics-product) | URL state, large datasets, expensive queries |
+| [10. AI Coding Agent Web App](#10-ai-coding-agent-web-app) | Streaming, state machines, permission gates |
+| [11. Local-first Multiplayer Game](#11-local-first-multiplayer-game) | WebRTC, event logs, conflict resolution |
+| [12. Design System / Component Platform](#12-design-system--component-platform) | Package architecture, versioning, accessibility |
+
 ---
 
 ## 1. Twitter-like Feed
@@ -19,7 +38,7 @@ Each project contains:
 
 Design the frontend architecture for a Twitter-like social feed.
 
-Backend is a black box that exposes APIs. Focus on the frontend application, data layer, rendering, realtime behavior, state management, and user experience.
+Backend internals are out of scope. Focus on the frontend application, data layer, rendering, realtime behavior, state management, user experience, and client-facing API contract when using Frontend + API mode.
 
 ### Core requirements
 

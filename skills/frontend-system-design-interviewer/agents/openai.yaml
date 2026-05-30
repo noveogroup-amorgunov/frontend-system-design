@@ -1,0 +1,4 @@
+interface:
+  display_name: "Frontend System Design Interviewer"
+  short_description: "Practice frontend system design interviews"
+  default_prompt: "Use $frontend-system-design-interviewer to run a realistic frontend system design interview."

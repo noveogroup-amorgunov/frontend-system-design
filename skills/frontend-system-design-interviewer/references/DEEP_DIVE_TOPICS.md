@@ -2,6 +2,18 @@
 
 This document helps you select a topic for a deep dive during a frontend system design interview and prepare a thoughtful answer. Each topic includes questions worth discussing with the interviewer, strengths of a good solution, and pitfalls that are easy to overlook.
 
+Use this catalog selectively. Pick one or two topics that have the greatest impact on the chosen product, ask the candidate to justify a decision, and explore the trade-offs. Do not turn the interview into a checklist walkthrough.
+
+## Contents
+
+- [1. Problem framing and architectural boundaries](#1-problem-framing-and-architectural-boundaries)
+- [2. Rendering, delivery, and application loading](#2-rendering-delivery-and-application-loading)
+- [3. Data model, API, and state](#3-data-model-api-and-state)
+- [4. Real-time, offline, and collaboration](#4-real-time-offline-and-collaboration)
+- [5. Frontend performance and scaling](#5-frontend-performance-and-scaling)
+- [6. Product platform, UI architecture, and team scaling](#6-product-platform-ui-architecture-and-team-scaling)
+- [7. Security, reliability, and delivery](#7-security-reliability-and-delivery)
+
 ## 1. Problem framing and architectural boundaries
 
 ### 1. Scope and assumptions

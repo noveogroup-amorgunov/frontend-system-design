@@ -2,17 +2,17 @@
 
 Frontend system design content.
 
-## frontend-system-design-interview skill
+## frontend-system-design-interviewer skill
 
 Install skill globally:
 
 ```bash
-npx skills add noveogroup-amorgunov/frontend-system-design - skill frontend-system-design-interviewer
+npx skills add noveogroup-amorgunov/frontend-system-design --skill frontend-system-design-interviewer --global
 ```
 
-And write to your AI-agent something like that:
+Then ask your AI agent something like:
 
-> Interview me on a Twitter-like service. Which part we'll design is up to you.
+> Use $frontend-system-design-interviewer to interview me on a Twitter-like service. Choose the product surface and interview mode.
 
 ## Content
 

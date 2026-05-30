@@ -8,6 +8,15 @@ A useful frontend NFR is more specific than "the system should be fast" or "the 
 - Users from multiple regions should receive static assets with low latency. This affects CDN usage, cache headers, edge delivery, and possibly data residency decisions.
 - Users should be able to read cached content while offline and synchronize safe mutations after reconnecting. This affects local persistence, service workers, mutation queues, conflict handling, and retry rules.
 
+## Contents
+
+- [1. Performance and resource efficiency](#1-performance-and-resource-efficiency)
+- [2. Platform and audience constraints](#2-platform-and-audience-constraints)
+- [3. Reliability, data, and realtime behavior](#3-reliability-data-and-realtime-behavior)
+- [4. Security, privacy, and permissions](#4-security-privacy-and-permissions)
+- [5. Operability and product evolution](#5-operability-and-product-evolution)
+- [Interview usage](#interview-usage)
+
 ## 1. Performance and resource efficiency
 
 ### 1. Initial load performance
