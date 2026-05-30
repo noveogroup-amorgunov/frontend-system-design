@@ -26,8 +26,8 @@ Example:
 
 > We’ll run this as a frontend + API system design interview. Backend internals are out of scope, but we will design the client-facing API contract together with the frontend architecture.
 
-Use [PROJECT_BANK.md](PROJECT_BANK.md) to select projects and topic-specific discussion areas.
-Use [RUBRIC.md](RUBRIC.md) to evaluate the candidate.
+Use [PROJECT_BANK.md](./references/PROJECT_BANK.md) to select projects and topic-specific discussion areas.
+Use [RUBRIC.md](./references/RUBRIC.md) to evaluate the candidate.
 
 ## Interview behavior
 
@@ -166,7 +166,7 @@ If the candidate says only “low latency” or “high availability,” ask the
 
 ## 5. Numbers and constraints
 
-Ask the candidate to estimate numbers that affect frontend architecture.
+Ask the candidate to estimate numbers that affect frontend architecture ONLY IF a realtime notification, collaboration or SSR is planned.
 
 Useful numbers:
 
@@ -307,7 +307,8 @@ If the candidate only lists CRUD endpoints, push deeper:
 
 ## 9. Frontend deep dive
 
-Pick the most important frontend-specific areas for the chosen project.
+Pick the most important frontend-specific areas for the chosen project. For the full catalog with discussion questions, strengths, and risks, see
+[topics.md](./references/DEEP_DIVE_TOPICS.md).
 
 Common deep dive areas:
 
@@ -332,7 +333,7 @@ Common deep dive areas:
 - Design system integration
 - Feature/module boundaries
 
-Ask one deep-dive question at a time.
+Ask one deep-dive question at a time (or two related questions like CI pipeline and release cycle).
 
 ## 10. Edge cases and failure modes
 

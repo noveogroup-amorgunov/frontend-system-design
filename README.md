@@ -16,6 +16,6 @@ And write to your AI-agent something like that:
 
 ## Content
 
-- [Project bank](./skills/frontend-system-design-interviewer/PROJECT_BANK.md)
-- [Deep-dive themes](./content/deep-dive/README.md)
-- [Non-functional requirements list](./content/non-functional-requirements/README.md)
+- [Project bank](./skills/frontend-system-design-interviewer/references/PROJECT_BANK.md)
+- [Deep-dive themes](./skills/frontend-system-design-interviewer/references/DEEP_DIVE_TOPICS.md)
+- [Non-functional requirements list](./skills/frontend-system-design-interviewer/references/NON_FUNCTIONAL_REQUIREMENTS_TOPICS.md)
