@@ -3,9 +3,11 @@
 Use this file to select a system when the user does not provide one.
 
 Each project contains:
+
 - Product prompt
 - Core requirements
 - Frontend-specific discussion topics
+- API design topics, for Frontend + API mode
 - Common candidate misses
 - Strong-signal follow-up questions
 
@@ -52,6 +54,23 @@ Backend is a black box that exposes APIs. Focus on the frontend application, dat
 - Session refresh
 - Multi-tab synchronization
 
+### API design topics
+
+- `GET /feed` with cursor pagination
+- `POST /posts`
+- `GET /posts/{postId}`
+- `POST /posts/{postId}/likes`
+- `DELETE /posts/{postId}/likes`
+- `GET /posts/{postId}/comments`
+- `POST /posts/{postId}/comments`
+- `POST /uploads/init`
+- `POST /uploads/{uploadId}/complete`
+- Session refresh endpoint
+- SSE/WebSocket contract for new posts, likes, comments, deleted posts
+- Idempotency for post creation and comments
+- Temporary client IDs for optimistic posts/comments
+- Error format for validation, rate limits, deleted content, and auth failures
+
 ### Common misses
 
 - Treating likes as purely backend-driven with no optimistic UI
@@ -61,6 +80,8 @@ Backend is a black box that exposes APIs. Focus on the frontend application, dat
 - Not discussing cache invalidation after mutations
 - Not handling deleted or moderated posts
 - Forgetting accessibility for composer and timeline updates
+- Designing generic CRUD APIs without feed-specific pagination and realtime events
+- Forgetting idempotency for post/comment creation
 
 ### Follow-up questions
 
@@ -69,6 +90,8 @@ Backend is a black box that exposes APIs. Focus on the frontend application, dat
 - How do comments update without refetching the whole post?
 - Would you use SSE or WebSocket for likes and new posts?
 - How do you model uploaded media before the post is published?
+- What should the feed API return: full nested objects or normalized entities?
+- What should be inside a `post_liked` realtime event?
 
 ---
 
@@ -106,6 +129,21 @@ Design the frontend architecture for a personalized news feed or media homepage.
 - BFF for page composition
 - Partial hydration / islands
 
+### API design topics
+
+- Page-composition API vs separate resource APIs
+- `GET /homepage`
+- `GET /articles/{slug}`
+- `GET /topics/{topic}/articles`
+- `GET /search`
+- `POST /bookmarks`
+- `DELETE /bookmarks/{articleId}`
+- Breaking-news polling, SSE, or push contract
+- Cache headers and CDN strategy
+- Personalization parameters
+- Experiment/variant metadata in responses
+- Analytics event ingestion boundary
+
 ### Common misses
 
 - Not discussing SEO
@@ -113,6 +151,7 @@ Design the frontend architecture for a personalized news feed or media homepage.
 - Over-personalizing and losing cacheability
 - Ignoring editorial overrides
 - Not separating anonymous and logged-in experiences
+- Not distinguishing cacheable public APIs from personalized APIs
 
 ### Follow-up questions
 
@@ -159,6 +198,21 @@ Design the frontend architecture for a real-time chat application.
 - Push notifications
 - Multi-device sync
 
+### API design topics
+
+- `GET /conversations`
+- `GET /conversations/{conversationId}/messages`
+- `POST /conversations/{conversationId}/messages`
+- `POST /uploads/init`
+- `POST /messages/{messageId}/read`
+- WebSocket contract for message created, delivered, read, typing, presence
+- Temporary client message IDs
+- Message deduplication strategy
+- Cursor pagination for older messages
+- Offline queue replay
+- Attachment upload lifecycle
+- Error contract for blocked users, deleted conversations, and permission changes
+
 ### Common misses
 
 - Not handling reconnects
@@ -167,6 +221,8 @@ Design the frontend architecture for a real-time chat application.
 - Ignoring offline send queue
 - Overusing global state for every message
 - Not modeling message statuses
+- Forgetting server acknowledgement shape for optimistic messages
+- Not defining WebSocket event ordering and deduplication
 
 ### Follow-up questions
 
@@ -212,6 +268,20 @@ Design the frontend architecture for a collaborative document editor like Google
 - WebSocket sync
 - IndexedDB
 
+### API design topics
+
+- Document metadata API
+- Initial document snapshot API
+- Permission/share API
+- Comment API
+- Version history API
+- WebSocket sync protocol
+- CRDT/OT update payloads
+- Presence event payloads
+- Autosave acknowledgement
+- Snapshot compaction boundary
+- Offline sync and conflict recovery contract
+
 ### Common misses
 
 - Treating document state like a normal REST resource
@@ -219,6 +289,7 @@ Design the frontend architecture for a collaborative document editor like Google
 - Forgetting undo/redo semantics
 - Ignoring offline edits
 - Not discussing permission changes during editing
+- Designing document editing as `PUT /document` instead of operation-based sync
 
 ### Follow-up questions
 
@@ -264,6 +335,21 @@ Design the frontend architecture for a Trello-like kanban board.
 - URL state for filters
 - Undo
 
+### API design topics
+
+- `GET /boards/{boardId}`
+- `POST /boards/{boardId}/columns`
+- `POST /columns/{columnId}/cards`
+- `PATCH /cards/{cardId}`
+- `POST /cards/{cardId}/move`
+- `POST /cards/{cardId}/comments`
+- `POST /uploads/init`
+- Realtime board event contract
+- Card ordering / position field contract
+- Idempotent move operations
+- Conflict response when card position changed
+- Permission-aware errors
+
 ### Common misses
 
 - Not modeling card order carefully
@@ -271,6 +357,7 @@ Design the frontend architecture for a Trello-like kanban board.
 - Ignoring concurrent reorder conflicts
 - Forgetting keyboard accessibility for drag-and-drop
 - Not handling partial failure after optimistic move
+- Not designing a safe API for reorder operations
 
 ### Follow-up questions
 
@@ -315,6 +402,20 @@ Design the frontend architecture for a YouTube-like video watch page.
 - Service worker caching, if relevant
 - Device constraints
 
+### API design topics
+
+- `GET /videos/{videoId}`
+- Playback manifest URL contract
+- `GET /videos/{videoId}/comments`
+- `POST /videos/{videoId}/comments`
+- `POST /videos/{videoId}/like`
+- `POST /subscriptions`
+- Recommendations API
+- Watch progress API with batching/throttling
+- Captions/subtitles API
+- Analytics beacon API
+- Error contract for unavailable, geo-blocked, or private videos
+
 ### Common misses
 
 - Ignoring player lifecycle
@@ -322,6 +423,7 @@ Design the frontend architecture for a YouTube-like video watch page.
 - Forgetting watch progress sync
 - Not discussing SEO for public video pages
 - Not considering caption accessibility
+- Sending watch progress too frequently without batching or throttling
 
 ### Follow-up questions
 
@@ -367,6 +469,22 @@ Design the frontend architecture for an e-commerce product page and shopping car
 - Performance budgets
 - Security around checkout
 
+### API design topics
+
+- `GET /products/{slug}`
+- Product variant availability API
+- `GET /cart`
+- `POST /cart/items`
+- `PATCH /cart/items/{itemId}`
+- `DELETE /cart/items/{itemId}`
+- `POST /cart/apply-promo`
+- Checkout session creation API
+- Guest cart token
+- Cart merge after login
+- Inventory freshness contract
+- Payment provider redirect boundary
+- Validation errors for variants, inventory, promo codes
+
 ### Common misses
 
 - Not distinguishing guest and authenticated cart
@@ -374,6 +492,8 @@ Design the frontend architecture for an e-commerce product page and shopping car
 - Forgetting SEO
 - Not handling payment redirects or failures
 - Putting sensitive payment logic in frontend
+- Not designing cart reconciliation after login
+- Not modeling inventory and price changes in API responses
 
 ### Follow-up questions
 
@@ -416,6 +536,20 @@ Design the frontend architecture for a booking system like Calendly.
 - Internationalization
 - Confirmation flow
 
+### API design topics
+
+- `GET /booking-pages/{hostSlug}`
+- `GET /availability`
+- `POST /bookings`
+- `PATCH /bookings/{bookingId}/reschedule`
+- `DELETE /bookings/{bookingId}`
+- Time zone representation in requests/responses
+- Slot hold vs direct booking
+- Race-condition error response
+- Calendar integration boundary
+- Confirmation payload
+- Idempotency key for booking creation
+
 ### Common misses
 
 - Mishandling time zones
@@ -423,6 +557,7 @@ Design the frontend architecture for a booking system like Calendly.
 - Not discussing race conditions
 - Forgetting accessibility of calendar controls
 - Ignoring reschedule/cancel flows
+- Not defining API behavior when a slot becomes unavailable
 
 ### Follow-up questions
 
@@ -466,6 +601,19 @@ Design the frontend architecture for an analytics dashboard.
 - Observability
 - Design system
 
+### API design topics
+
+- Metrics query API
+- Saved dashboard API
+- Export job API
+- Segment/filter schema
+- Query state serialization
+- Polling for long-running queries
+- Partial data response format
+- Data freshness metadata
+- Permission-aware shared report API
+- Error contract for invalid filters and expensive queries
+
 ### Common misses
 
 - Keeping filters only in local component state
@@ -473,6 +621,7 @@ Design the frontend architecture for an analytics dashboard.
 - Rendering too much data in the browser
 - Ignoring permissions for shared dashboards
 - Not defining data freshness expectations
+- Not designing async export or long-running query APIs
 
 ### Follow-up questions
 
@@ -519,6 +668,21 @@ Design the frontend architecture for a web-based AI coding agent similar to Open
 - Large text performance
 - State machines
 
+### API design topics
+
+- Workspace/session API
+- Agent run creation API
+- Streaming response contract via SSE/WebSocket
+- Tool call event schema
+- File tree API
+- Diff/proposed changes API
+- Approve/reject change API
+- Command execution API boundary
+- Cancellation endpoint
+- Audit log API
+- Error and recovery event schema
+- Permission prompt contract
+
 ### Common misses
 
 - Not modeling agent run lifecycle
@@ -526,6 +690,7 @@ Design the frontend architecture for a web-based AI coding agent similar to Open
 - Treating streamed output like a normal response
 - Not separating proposed changes from applied changes
 - Ignoring dangerous tool permissions
+- Not defining streaming event types and terminal states
 
 ### Follow-up questions
 
@@ -568,6 +733,19 @@ Design the frontend architecture for a local-first multiplayer card game using W
 - UI synchronization
 - Latency compensation
 
+### API design topics
+
+- Signaling API boundary
+- Room creation/join API
+- Peer discovery contract
+- Signed move payload format
+- Event log sync format
+- Snapshot exchange format
+- Reconnect/resume API
+- Optional relay server contract
+- Conflict or invalid move response
+- Identity/session contract
+
 ### Common misses
 
 - Not defining source of truth
@@ -575,6 +753,7 @@ Design the frontend architecture for a local-first multiplayer card game using W
 - Treating P2P as always connected
 - Not modeling reconnection
 - Overpromising cheat prevention on the client
+- Not separating signaling server APIs from peer-to-peer game events
 
 ### Follow-up questions
 
@@ -618,6 +797,17 @@ Design the frontend architecture for an internal design system and component doc
 - Migration guides
 - Monorepo boundaries
 
+### API design topics
+
+- Component registry API
+- Documentation search API
+- Version metadata API
+- Package release metadata
+- Example/snippet loading API
+- Design token distribution endpoint or package contract
+- Visual regression report API, if platform includes CI visibility
+- Compatibility/migration metadata
+
 ### Common misses
 
 - Treating design system as only UI components
@@ -625,6 +815,7 @@ Design the frontend architecture for an internal design system and component doc
 - Not discussing accessibility automation
 - Forgetting package consumption constraints
 - Not defining ownership and contribution model
+- Not designing metadata contracts for versions, tokens, and documentation search
 
 ### Follow-up questions
 
