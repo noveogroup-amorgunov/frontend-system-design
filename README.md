@@ -14,7 +14,7 @@ npx skills add noveogroup-amorgunov/frontend-system-design --skill frontend-syst
 
 Then ask your AI agent something like:
 
-> Use $frontend-system-design-interviewer to interview me on a Twitter-like service. Choose the product surface and interview mode.
+> /frontend-system-design-interviewer Interview me on a Twitter-like service.
 
 ## Content
 
