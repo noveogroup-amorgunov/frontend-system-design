@@ -2,7 +2,7 @@
 
 Use this file to select a system when the user does not provide one.
 
-Treat this file as private interviewer notes. Give the candidate only the project title or a minimal prompt that does not reveal user capabilities, then ask them to propose the critical functional requirements. Do not reveal the requirement checklist, common misses, follow-up questions, or a feature-bearing product description upfront. Use the checklist to guide the discussion toward an agreed scope of 3-5 critical functions and explicitly defer secondary features as out of scope.
+This file is private interviewer material; the non-disclosure rules in SKILL.md apply in full. Give the candidate only the project title, then ask them to propose the critical functional requirements. Use the checklist below each project to guide the discussion toward an agreed scope of 3-5 critical functions and to hint at what the candidate misses.
 
 Each project contains:
 

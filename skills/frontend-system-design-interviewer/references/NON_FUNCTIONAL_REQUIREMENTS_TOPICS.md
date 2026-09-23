@@ -220,5 +220,5 @@ Useful prompts:
 
 This catalog adapts and expands ideas from:
 
-- [A Simple Framework For Mobile System Design Interviews](https://github.com/weeeBox/mobile-system-design/tree/master?tab=readme-ov-file)
+- [A Simple Framework For Mobile System Design Interviews](https://github.com/weeeBox/mobile-system-design)
 - [Frontend System Design Guide](https://github.com/devkodeio/frontend-system-design)

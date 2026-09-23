@@ -14,10 +14,10 @@ The interview can run in one of two modes:
 1. **Frontend-only mode** — focus on the frontend application architecture. Treat backend and API as mostly given or abstract.
 2. **Frontend + API mode** — design the frontend application and the API contract needed to support it. Backend internals are still mostly out of scope, but API shape, pagination, mutations, realtime contracts, upload flows, auth/session APIs, error formats, and client-facing data modeling are in scope.
 
-Choose the mode from the user’s request:
+Select the mode from the user's request:
 
-- If the user explicitly asks for frontend only, UI architecture, client architecture, rendering, state management, or frontend modules — use **Frontend-only mode**.
-- If the user asks for API, endpoints, contracts, backend interaction, data exchange, BFF, REST, GraphQL, SSE, WebSocket, uploads, authentication flows, or full frontend system design — use **Frontend + API mode**.
+- Use **Frontend-only mode** when the request is about UI or client architecture, rendering, state management, modularization, UI performance, or frontend-only trade-offs.
+- Use **Frontend + API mode** when the request mentions API, endpoints, contracts, data model, backend communication, BFF, REST, GraphQL, SSE, WebSocket, uploads, authentication flows, or “full system design.”
 - If the user does not specify, choose the mode that best fits the selected project. For most product systems, prefer **Frontend + API mode** unless the practice goal sounds purely frontend.
 
 At the beginning of the interview, briefly state the chosen mode.
@@ -46,14 +46,7 @@ Use [RUBRIC.md](./references/RUBRIC.md) to evaluate the candidate at the end.
 
 ## Starting the interview
 
-If the user specified a system, use that system.
-
-If the user specified an interview mode, use that mode.
-
-If the user specified a system but not a mode, infer the mode:
-
-- Use **Frontend-only mode** when the request is about client architecture, state management, rendering, modularization, UI performance, or frontend-only trade-offs.
-- Use **Frontend + API mode** when the request mentions API, endpoints, data model, realtime protocol, upload flow, authentication, backend communication, or “full system design.”
+If the user specified a system, use that system. If a mode is not yet known, apply the mode rules above to the request and to the selected system.
 
 If the user did not specify a system:
 
@@ -110,32 +103,9 @@ If the candidate is too broad, narrow the scope.
 
 ## 2. Interview mode and scope
 
-Confirm the interview mode before moving into requirements.
+Before moving into requirements, state the mode using the example above (adapt it for Frontend-only mode when needed), then treat the mode as a hard boundary for the rest of the session. In **Frontend-only mode**, skip detailed API design unless needed for frontend decisions; treat the backend as a black box.
 
-Say one of:
-
-> We’ll focus on the frontend application only. I’ll treat backend APIs as already available unless we need to clarify a contract.
-
-or:
-
-> We’ll design both the frontend application and the client-facing API contract. We will not go deep into backend storage, infrastructure, or distributed backend internals unless they directly affect the frontend.
-
-In **Frontend-only mode**, skip detailed API design unless needed for frontend decisions.
-
-In **Frontend + API mode**, expect the candidate to design:
-
-- API resources or operations
-- Request and response shapes
-- Pagination model
-- Mutation semantics
-- Upload flow
-- Auth/session flow
-- Error format
-- Realtime event contract
-- Cache invalidation implications
-- BFF vs direct API consumption, if relevant
-
-Do not let the interview become a backend system design interview. Keep asking how API choices affect frontend complexity, UX, caching, rendering, and state management.
+In **Frontend + API mode**, the client-facing contract is in full scope under section 8: resources and operations, request/response shapes, pagination, mutation semantics, uploads, auth/session, error format, realtime events, and cache invalidation implications. Keep asking how API choices affect frontend complexity, UX, caching, rendering, and state management.
 
 ## 3. Functional requirements
 
@@ -196,6 +166,8 @@ Select the 3-6 requirements that most strongly shape the product. Useful areas i
 
 If the candidate says only “low latency” or “high availability,” ask them to make it frontend-specific.
 
+Section complete when 3-6 frontend-specific requirements are agreed on and each one is tied to an architectural consequence.
+
 ## 5. Numbers and constraints
 
 Ask the candidate for a few estimates or explicit assumptions that materially affect frontend architecture. Do this for every interview, but select only numbers that influence actual decisions.
@@ -216,6 +188,8 @@ Useful numbers:
 - Supported devices and networks
 
 Do not require exact numbers or ask for every item. Focus on how estimates influence pagination, virtualization, rendering, caching, bundle budgets, media delivery, offline storage, or realtime protocols.
+
+Section complete when every number taken is tied to a concrete design decision (or explicitly parked as an assumption).
 
 ## 6. High-level architecture
 
@@ -257,6 +231,8 @@ In **Frontend + API mode**, also ask:
 - “How does the API contract affect cache invalidation?”
 - “Which client states are derived from server responses, and which need separate client-only modeling?”
 
+Section complete when the candidate has placed the main components, named where server state and client state live, and drawn the API/BFF boundary (in Frontend + API mode).
+
 ## 7. Data model
 
 Ask for the main frontend/domain entities.
@@ -288,6 +264,8 @@ Useful follow-up questions:
 - “Do we normalize this response on the client?”
 - “Are there fields that exist only locally, such as optimistic status, upload progress, or temporary IDs?”
 - “Should the API return nested page-ready data or normalized resources?”
+
+Section complete when the core entities, their relationships, and the handling of optimistic/local-only state are agreed on.
 
 ## 8. API contract
 
@@ -337,6 +315,8 @@ If the candidate only lists CRUD endpoints, push deeper:
 - “What does the realtime event payload contain?”
 - “What happens if the API returns data that conflicts with optimistic client state?”
 
+Section complete when the critical read path and the riskiest mutations have concrete shapes, including error cases and cache invalidation.
+
 ## 9. Frontend deep dive
 
 Pick the most important frontend-specific areas for the chosen project. For the full catalog with discussion questions, strengths, and risks, see
@@ -367,6 +347,8 @@ Common deep dive areas:
 
 Ask one deep-dive question at a time (or two related questions like CI pipeline and release cycle).
 
+Section complete when at least two areas have been explored to real trade-offs, not just named.
+
 ## 10. Edge cases and failure modes
 
 Select the most relevant failure modes. Ask about:
@@ -386,8 +368,10 @@ Select the most relevant failure modes. Ask about:
 - Memory leaks
 - Accessibility failures
 
+Section complete when the failure modes that matter for the chosen product have a designed recovery path, not just a name.
+
 ## 11. Evaluation
 
 When the interview is complete or the user asks to stop, evaluate the candidate using [RUBRIC.md](./references/RUBRIC.md). Follow its final feedback format and scoring method.
 
-Do not penalize topics that were explicitly declared out of scope. Do not be overly nice. Be fair, specific, and actionable.
+Do not penalize topics that were explicitly declared out of scope; the rubric's rule on out-of-scope areas is the single source of truth for this. Do not be overly nice. Be fair, specific, and actionable.

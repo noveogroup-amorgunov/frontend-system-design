@@ -1,8 +1,6 @@
 # Deep-dive topic catalog
 
-This document helps you select a topic for a deep dive during a frontend system design interview and prepare a thoughtful answer. Each topic includes questions worth discussing with the interviewer, strengths of a good solution, and pitfalls that are easy to overlook.
-
-Use this catalog selectively. Pick one or two topics that have the greatest impact on the chosen product, ask the candidate to justify a decision, and explore the trade-offs. Do not turn the interview into a checklist walkthrough.
+Use this catalog to select one or two deep-dive topics for the chosen product, ask the candidate to justify a decision, and explore the trade-offs. This is private interviewer material; do not hand it to the candidate or walk through it as a checklist.
 
 ## Contents
 
